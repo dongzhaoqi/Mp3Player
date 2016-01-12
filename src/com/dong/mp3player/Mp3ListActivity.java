@@ -30,7 +30,7 @@ import com.dong.xml.Mp3ListContentHandler;
 public class Mp3ListActivity extends ListActivity {
 
 	private static final int UPDATE = 1;
-	private static final int ABOUT = 2;
+	private static final int MAIN = 2;
 	private List<HashMap<String, String>> list = new ArrayList<>();
 	private List<Mp3Info> mp3Infos = null;
 
@@ -43,13 +43,13 @@ public class Mp3ListActivity extends ListActivity {
 					.permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 		}
-		updateListVIew();
+		//updateListVIew();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, UPDATE, 1, R.string.update_list);
-		menu.add(0, ABOUT, 2, R.string.about);
+		menu.add(0, MAIN, 2, R.string.main);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -58,8 +58,9 @@ public class Mp3ListActivity extends ListActivity {
 		int id = item.getItemId();
 		if (id == UPDATE) {
 			updateListVIew();
-		} else if (id == ABOUT) {
-
+		} else if (id == MAIN) {
+			Intent intent = new Intent(Mp3ListActivity.this,CustomizedListView.class);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}
