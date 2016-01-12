@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.dong.R;
 import com.dong.mp3player.CustomizedListView;
 import com.dong.util.ImageLoader;
+import com.loopj.android.image.SmartImageView;
 
 public class LazyAdapter extends BaseAdapter {
 
@@ -51,7 +52,7 @@ public class LazyAdapter extends BaseAdapter {
 		TextView title = (TextView) vi.findViewById(R.id.title); // 标题
 		TextView artist = (TextView) vi.findViewById(R.id.artist); // 歌手名
 		TextView duration = (TextView) vi.findViewById(R.id.duration); // 时长
-		ImageView thumb_image = (ImageView) vi.findViewById(R.id.list_image); // 缩略图
+		SmartImageView thumb_image = (SmartImageView) vi.findViewById(R.id.list_image); // 缩略图
 
 		HashMap<String, String> song = new HashMap<String, String>();
 		song = data.get(position);
@@ -60,8 +61,8 @@ public class LazyAdapter extends BaseAdapter {
 		title.setText(song.get(CustomizedListView.KEY_TITLE));
 		artist.setText(song.get(CustomizedListView.KEY_ARTIST));
 		duration.setText(song.get(CustomizedListView.KEY_DURATION));
-		imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL),
-				thumb_image);
+		thumb_image.setImageUrl(song.get(CustomizedListView.KEY_THUMB_URL));
+		//imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL),thumb_image);
 		return vi;
 	}
 }

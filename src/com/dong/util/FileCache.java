@@ -3,6 +3,7 @@ package com.dong.util;
 import java.io.File;
 
 import android.content.Context;
+import android.os.Environment;
 
 public class FileCache {
     
@@ -10,8 +11,8 @@ public class FileCache {
     
     public FileCache(Context context){
         //找一个用来缓存图片的路径
-        if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"LazyList");
+        if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
+            cacheDir=new File(Environment.getExternalStorageDirectory(),"LazyList");
         else
             cacheDir=context.getCacheDir();
         if(!cacheDir.exists())
