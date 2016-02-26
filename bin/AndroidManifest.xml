@@ -26,6 +26,8 @@
         </activity>
         
         <activity android:name=".mp3player.CustomizedListView"></activity>
+
+        <activity android:name=".mp3player.DownloadActivity"></activity>
         
         <service android:name=".service.DownloadServie"></service>
     </application>

@@ -31,6 +31,7 @@ public class Mp3ListActivity extends ListActivity {
 
 	private static final int UPDATE = 1;
 	private static final int MAIN = 2;
+	private static final int DOWNLOAD = 3;
 	private List<HashMap<String, String>> list = new ArrayList<>();
 	private List<Mp3Info> mp3Infos = null;
 
@@ -50,6 +51,7 @@ public class Mp3ListActivity extends ListActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, UPDATE, 1, R.string.update_list);
 		menu.add(0, MAIN, 2, R.string.main);
+		menu.add(0, DOWNLOAD,3,R.string.download);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -61,8 +63,15 @@ public class Mp3ListActivity extends ListActivity {
 		} else if (id == MAIN) {
 			Intent intent = new Intent(Mp3ListActivity.this,CustomizedListView.class);
 			startActivity(intent);
+		}else if(id == DOWNLOAD){
+			download();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void download() {
+		Intent intent = new Intent(Mp3ListActivity.this,DownloadActivity.class);
+		startActivity(intent);
 	}
 
 	@Override
